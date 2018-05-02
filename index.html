@@ -1,13 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
+
 
 <head> 
+<link rel="stylesheet" type="text/css" href="mainStyle.css" />
 <title>FFXI Craft Calculator</title>
-<img src="/img/banner_web2.png">
 </head>
 
-<body> Let's get crafting ya'lllll <br>
-	We gonna add some calculator stuffs here real soon bb yeet</body>
+
+<body> 
+
+	<h1 style="text-align:center;">Virisu's FFXI Crafting Calculator</h1><br>
+	
+	
+	
+
+	<!-- This is the title -->
+	<table width="700" height="30" border="0" align="center" style="background-color: lightblue">
+		<tbody>
+			<tr valign="bottom">
+				<td align="center">
+					<b>Virisu's FFXI Crafting Calculator</b>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<!-- This is the craft and item search table -->
+	<table width="700" height="20" border="0" align="center" style="background-color: lightblue">
+		<tbody>
+			<tr valign="bottom">
+				<td align="right" width="120">
+					<b>Craft:</b>
+				</td>
+				<td align="left">
+					<select style="width:150px;">
+						<option value="Cooking">Cooking</option>
+						<option value="Alchemy">Alchemy</option>
+					</select>
+				</td>
+				<td align="right">
+					<b>Item:</b>
+				</td>
+				<td align="left">
+					<form autocomplete="off" action="/action_page.php">
+						<div style="width:170px" class="autocomplete">
+							<input type="text" name="itemSearch" placeholder="Item Search">
+						</div>
+					</form>
+				</td>
+				<td width="120">
+					<button style="width:60px;height:20px;" type="button">Select</button>
+				</td>	
+			</tr>
+		</tbody>
+	</table>
+	
+
+	<p>
+		Let's get crafting ya'lllll <br>
+		We gonna add some calculator stuffs here real soon bb yeet
+	</p>
+</body>
 
 
 

@@ -1,0 +1,31 @@
+body{
+	background-color: #D0D0D0;
+}
+
+table, th, td {
+	
+}
+
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+
+.col1, .col2 {
+    display: inline-block;
+    min-width: 200px;
+    padding: 4px;
+}
+.row {
+    white-space: nowrap;
+
+}
+
+#craftSelect {
+	mid-width: 200px;
+}
+
+.rowTop{
+	white-space: nowrap;
+}
