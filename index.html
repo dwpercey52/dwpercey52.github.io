@@ -11,12 +11,9 @@ $("document").ready(function(){
 	var $testPar = $('#testme2');
 	$.ajax({
 		type: 'GET',
-		url: 'json/smallList.json',
-		success: function(data){
-			$.each(data, function(i, value){
-				$testPar.append(value.id + ', name: ' + value.name);
-			});
-		}
+		url: 'json/smallList.json'
+	}).done(function(data){
+		console.log(data);
 	});
 });
 </script>
