@@ -5,66 +5,202 @@
 <head> 
 <link rel="stylesheet" type="text/css" href="mainStyle.css" />
 <title>FFXI Craft Calculator</title>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(function(){
+	$.ajax({
+		type: 'GET',
+		url: '/json/itemList',
+		success: function(data){
+			console.log('success', data);
+		}
+	});
+});
+</script>
 </head>
 
 
-<body> 
+<body onload="listSort()"> 
 
-	<h1 style="text-align:center;">Virisu's FFXI Crafting Calculator</h1><br>
+	<h1 id="webTitle" style="text-align:center;">Virisu's FFXI Crafting Calculator</h1><br>
 	
 	
 	
 
-	<!-- This is the title -->
-	<table width="700" height="30" border="0" align="center" style="background-color: lightblue">
-		<tbody>
+	<!-- This is the title 
+	<table width="700" height="30" border="0" align="center">
 			<tr valign="bottom">
 				<td align="center">
 					<b>Virisu's FFXI Crafting Calculator</b>
 				</td>
 			</tr>
-		</tbody>
-	</table>
+	</table> -->
 	
 	<!-- This is the craft and item search table -->
-	<table width="700" height="20" border="0" align="center" style="background-color: lightblue">
-		<tbody>
+	<table width="700" height="20" border="0" align="center">
 			<tr valign="bottom">
 				<td align="right" width="120">
 					<b>Craft:</b>
 				</td>
-				<td align="left">
-					<select style="width:150px;">
+				<td align="left" >
+					<select  id="craftList" style="width:150px;" onchange="updateList()">
+						<option value="None">None</option>
 						<option value="Cooking">Cooking</option>
 						<option value="Alchemy">Alchemy</option>
 					</select>
 				</td>
-				<td align="right">
+				<td align="right" width="100">
 					<b>Item:</b>
 				</td>
 				<td align="left">
-					<form autocomplete="off" action="/action_page.php">
-						<div style="width:170px" class="autocomplete">
-							<input type="text" name="itemSearch" placeholder="Item Search">
-						</div>
-					</form>
+					<select style="width:150px;" id="itemSearch">
+					</select>
 				</td>
 				<td width="120">
-					<button style="width:60px;height:20px;" type="button">Select</button>
+						<button style="width:60px;height:20px;" type="button" id="itemsButton">Select</button>
 				</td>	
 			</tr>
-		</tbody>
 	</table>
 	
-
-	<p>
-		Let's get crafting ya'lllll <br>
-		We gonna add some calculator stuffs here real soon bb yeet
-	</p>
+	
+	<!-- contains all the item information and prices -->
+	<table width="700" height="108" border="0" align="center">
+		<tr height="33" border="1" align="center">
+			<td align="center"> <img src="https://static.ffxiah.com/images/icon/4096.png">
+			</td>
+			<td> <img src="https://static.ffxiah.com/images/icon/4096.png">
+			</td>
+			<td> <img src="https://static.ffxiah.com/images/icon/4096.png">
+			</td>
+			<td> <img src="https://static.ffxiah.com/images/icon/4096.png">
+			</td>
+			<td> <img src="https://static.ffxiah.com/images/icon/4096.png">
+			</td>
+			<td> <img src="https://static.ffxiah.com/images/icon/4096.png">
+			</td>
+			<td> <img src="https://static.ffxiah.com/images/icon/4096.png">
+			</td>
+			<td> <img src="https://static.ffxiah.com/images/icon/4096.png">
+			</td>
+			<td> <img src="https://static.ffxiah.com/images/icon/856.png">
+			</td>
+		</tr>
+		<tr height="25" border="1" align="center">
+			<td> <a href="https://www.ffxiah.com/item/4096/fire-crystal">Fire Crystal</a>
+			</td>
+			<td> <a href="https://www.ffxiah.com/item/4096/fire-crystal">Fire Crystal</a>
+			</td>
+			<td> <a href="https://www.ffxiah.com/item/4096/fire-crystal">Fire Crystal</a>
+			</td>
+			<td> <a href="https://www.ffxiah.com/item/4096/fire-crystal">Fire Crystal</a>
+			</td>
+			<td> <a href="https://www.ffxiah.com/item/4096/fire-crystal">Fire Crystal</a>
+			</td>
+			<td> <a href="https://www.ffxiah.com/item/4096/fire-crystal">Fire Crystal</a>
+			</td>
+			<td> <a href="https://www.ffxiah.com/item/4096/fire-crystal">Fire Crystal</a>
+			</td>
+			<td> <a href="https://www.ffxiah.com/item/4096/fire-crystal">Fire Crystal</a>
+			</td>
+			<td> <a href="https://www.ffxiah.com/item/4096/fire-crystal">Fire Crystal</a>
+			</td>
+		</tr>
+		<tr height="25" border="1">
+			<td align="center"> 
+				<select id="itemOneSS" style="width:70px;">
+						<option value="Stack">Stack</option>
+						<option value="Single">Single</option>
+				</select>
+			</td>
+			<td align="center"> 
+				<select  id="itemTwoSS" style="width:70px;">
+						<option value="Stack">Stack</option>
+						<option value="Single">Single</option>
+				</select>
+			</td>
+			<td align="center"> 
+				<select id="itemThreeSS" style="width:70px;">
+						<option value="Stack">Stack</option>
+						<option value="Single">Single</option>
+				</select>
+			</td>
+			<td align="center"> 
+				<select  id="itemFourSS" style="width:70px;">
+						<option value="Stack">Stack</option>
+						<option value="Single">Single</option>
+				</select>
+			</td>
+			<td align="center"> 
+				<select id="itemFiveSS" style="width:70px;">
+						<option value="Stack">Stack</option>
+						<option value="Single">Single</option>
+				</select>
+			</td>
+			<td align="center"> 
+				<select id="itemSixSS" style="width:70px;">
+						<option value="Stack">Stack</option>
+						<option value="Single">Single</option>
+				</select>
+			</td>
+			<td align="center"> 
+				<select id="itemSevenSS" style="width:70px;">
+						<option value="Stack">Stack</option>
+						<option value="Single">Single</option>
+				</select>
+			</td>
+			<td align="center"> 
+				<select id="itemEightSS" style="width:70px;">
+						<option value="Stack">Stack</option>
+						<option value="Single">Single</option>
+				</select>
+			</td>
+			<td align="center"> 
+				<select id="itemNineSS" style="width:70px;">
+						<option value="Stack">Stack</option>
+						<option value="Single">Single</option>
+				</select>
+			</td>
+		</tr>
+		<tr height="25" border="1">
+			<td>
+				<input type="text" id="priceOne" placeholder="Price" style="width:70px">
+			</td>
+			<td>
+				<input type="text" id="priceTwo" placeholder="Price" style="width:70px">
+			</td>
+			<td>
+				<input type="text" id="priceThree" placeholder="Price" style="width:70px">
+			</td>
+			<td>
+				<input type="text" id="priceFour" placeholder="Price" style="width:70px">
+			</td>
+			<td>
+				<input type="text" id="priceFive" placeholder="Price" style="width:70px">
+			</td>
+			<td>
+				<input type="text" id="priceSix" placeholder="Price" style="width:70px">
+			</td>
+			<td>
+				<input type="text" id="priceSeven" placeholder="Price" style="width:70px">
+			</td>
+			<td>
+				<input type="text" id="priceEight" placeholder="Price" style="width:70px">
+			</td>
+			<td>
+				<input type="text" id="priceNine" placeholder="Price" style="width:70px">
+			</td>
+		</tr>
+	</table>
+	
+	
+	<p id="testme"> </p>
+	
+	<!-- JAVASCRIPTS --->
+	
+	
+	<script src="main.js"></script>
+	
+	
 </body>
-
-
-
 
 </html>
