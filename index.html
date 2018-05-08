@@ -11,9 +11,14 @@ $(document).ready(function(){
 	var $testPar = $('#testme2');
 	$.ajax({
 		type: 'GET',
-		url: 'smallList.json'
-	}).done(function(data){
-		console.log(data);
+		url: 'smallList.json',
+		success : function(data){
+			console.log(data);
+			
+			var parse = $.parseJSON(data);
+			
+			$('#testme2').append(data[0].id + data[0].name);
+		}
 	});
 });
 </script>
@@ -194,7 +199,7 @@ $(document).ready(function(){
 	
 	
 	<p id="testme"> hello this is a test!  </p>
-	<p id="testme2"></p>
+	<div id="testme2"></div>
 	
 	<!-- JAVASCRIPTS --->
 	
