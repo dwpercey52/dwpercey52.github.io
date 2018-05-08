@@ -7,13 +7,13 @@
 <title>FFXI Craft Calculator</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-$(function(){
+$("document").ready(function(){
+	var $testPar = $('#testme2');
 	$.ajax({
 		type: 'GET',
-		url: 'json/itemList.json',
-		success: function(data){
-			console.log('success', data);
-		}
+		url: 'json/smallList.json'
+	}).done(function(data){
+		console.log(data);
 	});
 });
 </script>
@@ -193,7 +193,8 @@ $(function(){
 	</table>
 	
 	
-	<p id="testme"> </p>
+	<p id="testme"> hello this is a test!  </p>
+	<p id="testme2"></p>
 	
 	<!-- JAVASCRIPTS --->
 	
