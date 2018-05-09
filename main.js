@@ -11,6 +11,7 @@
 		cookingList = temp;
 		temp = alchemyList.sort();
 		alchemyList = temp;
+		console.log("items are sorted");
 	}
 	
 	function updateList(){
